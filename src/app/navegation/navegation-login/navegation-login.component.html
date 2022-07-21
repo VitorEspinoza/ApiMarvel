@@ -1,0 +1,17 @@
+<div [ngSwitch]="loggedUser()">
+
+  <a *ngSwitchCase="false" id="buttonDiv"></a>
+  <a *ngSwitchCase="true" mat-button [routerLink]="['/profile']">
+      {{ email }}
+  </a>
+  <a   *ngSwitchCase="true" mat-button  href="javascript:void(0)" (click)="logout()">
+      Logout <span class="material-icons">logout</span>
+  </a>
+
+</div>
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+<div style="margin: 0 auto; max-width: 1300px;">
+  <h1 style="margin-top: 20px;">Marvel Characters</h1>
+  <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+  <mat-card style="width: 380px; margin-bottom: 8px" class="card" *ngFor="let character of allCharacters">
+    <mat-card-title-group>
+      <mat-card-title>{{ character.name }}</mat-card-title>
+      <mat-card-subtitle>Modified: {{ character.modified  | date:'medium' }}</mat-card-subtitle>
+      <img mat-card-sm-image src="{{character.thumbnail.path +'/standard_medium.'+character.thumbnail.extension}}"  >
+    </mat-card-title-group>
+    <div *ngIf= "character.description != '' ">
+      <mat-card-content style="height: 150px;" >
+        {{character.description}}
+      </mat-card-content>
+    </div>
+    <div *ngIf= "character.description == '' ">
+      <mat-card-content style="height: 150px;" >
+      This character contains no description
+      </mat-card-content>
+    </div>
+
+  </mat-card>
+</div>
+<mat-paginator [length] = totalResults
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page"
+              (page)="pageEvent = $event; loadCharacters()">
+</mat-paginator>
+</div>
+
+
+
